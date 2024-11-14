@@ -1,6 +1,10 @@
 <?php
 
-$params = require __DIR__ . '/params.php';
+$params = array_merge(
+    require __DIR__ . '/params.php',
+    require __DIR__ . '/logger.php'
+);
+
 $db = require __DIR__ . '/db.php';
 
 $config = [
@@ -42,14 +46,15 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'log' => 'log/log',
+                'log-to/<type>' => 'log/log-to',
+                'log-to-all' => 'log/log-to-all',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
